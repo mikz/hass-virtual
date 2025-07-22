@@ -23,7 +23,7 @@ from . import get_entity_configs
 from .const import *
 from .entity import (
     VirtualOpenableEntity,
-    virtual_schema,
+    virtual_schema, positive_tick,
 )
 
 
@@ -36,12 +36,12 @@ DEFAULT_VALVE_VALUE = "open"
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(virtual_schema(DEFAULT_VALVE_VALUE, {
     vol.Optional(CONF_CLASS): cv.string,
     vol.Optional(CONF_OPEN_CLOSE_DURATION, default=10): cv.positive_int,
-    vol.Optional(CONF_OPEN_CLOSE_TICK, default=1): cv.positive_int,
+    vol.Optional(CONF_OPEN_CLOSE_TICK, default=1): positive_tick,
 }))
 VALVE_SCHEMA = vol.Schema(virtual_schema(DEFAULT_VALVE_VALUE, {
     vol.Optional(CONF_CLASS): cv.string,
     vol.Optional(CONF_OPEN_CLOSE_DURATION, default=10): cv.positive_int,
-    vol.Optional(CONF_OPEN_CLOSE_TICK, default=1): cv.positive_int,
+    vol.Optional(CONF_OPEN_CLOSE_TICK, default=1): cv.positive_tick,
 }))
 
 
